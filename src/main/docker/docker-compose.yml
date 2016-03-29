@@ -1,0 +1,16 @@
+embedded-mysql:
+  image: mysql:latest
+  environment:
+    - MYSQL_ROOT_PASSWORD=s3cr3t
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=pass
+  volumes:
+    - /tmp/mysql:/var/lib/mysql
+
+spring-boot-jpa-docker-webapp:
+  image: tatane/docker-test
+  links:
+    - embedded-mysql:mysql
+  ports:
+    - 9090:9090
