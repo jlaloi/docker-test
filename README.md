@@ -13,3 +13,6 @@ docker push tatane/docker-test
 cd src/main/docker
 
 docker-compose up / docker-compose stop
+
+### DEV
+*--spring.profiles.active=dev*
