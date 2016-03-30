@@ -1,3 +1,10 @@
+mysql_data:
+  container_name: mysql_data
+  image: tianon/true
+  volumes:
+    - /var/lib/mysql
+    - /var/lib/mysql-files
+
 embedded-mysql:
   image: mysql:latest
   environment:
@@ -5,8 +12,8 @@ embedded-mysql:
     - MYSQL_DATABASE=SPRING_TEST
     - MYSQL_USER=test
     - MYSQL_PASSWORD=pass
-  volumes:
-    - /tmp/mysql:/var/lib/mysql
+  volumes_from:
+    - mysql_data
   ports:
     - 3307:3306
 
