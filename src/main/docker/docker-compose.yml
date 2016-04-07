@@ -4,6 +4,11 @@ mysql_data:
   volumes:
     - /var/lib/mysql
     - /var/lib/mysql-files
+  cap_add:
+      - ALL
+  cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
 
 embedded-mysql:
   image: mysql:latest
@@ -16,6 +21,11 @@ embedded-mysql:
     - mysql_data
   ports:
     - 3307:3306
+  cap_add:
+      - ALL
+  cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
 
 spring-boot-jpa-docker-webapp:
   image: tatane/docker-test
@@ -23,3 +33,9 @@ spring-boot-jpa-docker-webapp:
     - embedded-mysql:mysql
   ports:
     - 9091:9090
+  cap_add:
+      - ALL
+  cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+  restart: always
