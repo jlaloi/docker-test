@@ -16,3 +16,8 @@ spring:
 endpoints:
   shutdown:
     enabled: true
+
+logging:
+  level:
+    root: INFO
+  file: /tmp/log/springTest.log
